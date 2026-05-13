@@ -1,0 +1,14 @@
+{
+  "name": "aperio",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "serve": "serve .",
+    "css": "tailwindcss -i css/input.css -o css/app.css --minify",
+    "css:watch": "tailwindcss -i css/input.css -o css/app.css --watch"
+  },
+  "devDependencies": {
+    "serve": "^14.2.6",
+    "tailwindcss": "^3.4.0"
+  }
+}

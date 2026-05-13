@@ -1,0 +1,70 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Shared sidebar behaviour ───────────────────────────────────────────── */
+[data-collapsed="true"].sidebar-panel {
+  transform: translateX(-100%);
+}
+@media (min-width: 768px) {
+  [data-collapsed="true"].sidebar-panel {
+    transform: translateX(0);
+    width: 0;
+    border-right-width: 0;
+    overflow: hidden;
+  }
+}
+
+/* ── XLSX: cell grid ─────────────────────────────────────────────────────── */
+td[data-r]  { cursor: cell; user-select: none; }
+td.sel      { box-shadow: inset 0 0 0 2px #2563eb; }
+
+#cell-editor {
+  position: absolute;
+  box-sizing: border-box;
+  border: 2px solid #2563eb;
+  outline: none;
+  padding: 2px 8px;
+  font-size: 12px;
+  font-family: ui-monospace, SFMono-Regular, monospace;
+  background: #fff;
+  z-index: 100;
+  min-width: 80px;
+}
+
+/* ── DOCX: document typography ───────────────────────────────────────────── */
+#doc-content h1 { font-size: 2em;    font-weight: 700; margin: 0.67em 0; }
+#doc-content h2 { font-size: 1.5em;  font-weight: 700; margin: 0.75em 0; }
+#doc-content h3 { font-size: 1.17em; font-weight: 700; margin: 0.83em 0; }
+#doc-content h4 { font-size: 1em;    font-weight: 700; margin: 1.12em 0; }
+#doc-content h5 { font-size: 0.83em; font-weight: 700; margin: 1.5em  0; }
+#doc-content h6 { font-size: 0.75em; font-weight: 700; margin: 1.67em 0; }
+#doc-content p  { margin: 0.6em 0; line-height: 1.65; }
+#doc-content ul,
+#doc-content ol { margin: 0.5em 0 0.5em 1.5em; }
+#doc-content li { margin: 0.25em 0; line-height: 1.6; }
+#doc-content a  { color: #2563eb; text-decoration: underline; }
+#doc-content strong { font-weight: 700; }
+#doc-content em     { font-style: italic; }
+#doc-content table  { border-collapse: collapse; width: 100%; margin: 1em 0; }
+#doc-content th,
+#doc-content td     { border: 1px solid #d1d5db; padding: 6px 10px; text-align: left; }
+#doc-content th     { background: #f9fafb; font-weight: 600; }
+#doc-content img    { max-width: 100%; height: auto; display: block; margin: 0.5em 0; }
+#doc-content blockquote {
+  border-left: 3px solid #d1d5db;
+  margin: 1em 0;
+  padding: 0.5em 1em;
+  color: #4b5563;
+}
+#doc-content pre,
+#doc-content code {
+  font-family: ui-monospace, SFMono-Regular, monospace;
+  background: #f3f4f6;
+  padding: 0.2em 0.4em;
+  border-radius: 3px;
+  font-size: 0.9em;
+}
+#doc-content pre    { padding: 1em; overflow-x: auto; }
+#doc-content pre code { background: none; padding: 0; }
+#doc-content hr     { border: none; border-top: 1px solid #e5e7eb; margin: 1.5em 0; }

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>pptx viewer</title>
+  <link rel="stylesheet" href="../css/app.css" />
+</head>
+
+<body class="m-0 h-full bg-white text-black font-sans antialiased">
+  <div id="app" class="flex flex-col h-screen">
+    <header class="relative flex items-center gap-2 sm:gap-3 px-3 sm:px-4 py-2 sm:py-3 border-b border-gray-200 flex-wrap">
+      <button id="menuBtn" aria-label="toggle sidebar"
+        class="inline-flex flex-col justify-center items-center gap-1 w-8 h-7 p-0 bg-white border border-gray-300 hover:border-black cursor-pointer shrink-0">
+        <span class="block w-4 h-0.5 bg-black"></span>
+        <span class="block w-4 h-0.5 bg-black"></span>
+        <span class="block w-4 h-0.5 bg-black"></span>
+      </button>
+      <input type="file" id="fileInput" accept=".pptx" class="text-xs sm:text-sm text-black min-w-0 max-w-[160px] sm:max-w-none" />
+      <div id="navControls" class="order-3 w-full sm:w-auto sm:order-none sm:absolute sm:left-1/2 sm:-translate-x-1/2 flex items-center gap-2 sm:gap-3 text-xs text-gray-500 justify-center">
+        <button id="prevBtn" class="bg-white text-black border border-gray-300 hover:border-black px-2.5 py-1 cursor-pointer text-xs">prev</button>
+        <button id="nextBtn" class="bg-white text-black border border-gray-300 hover:border-black px-2.5 py-1 cursor-pointer text-xs">next</button>
+        <span id="counter" class="whitespace-nowrap">- / -</span>
+        <button id="presentBtn" class="bg-white text-black border border-gray-300 hover:border-black px-2.5 py-1 cursor-pointer text-xs">present</button>
+      </div>
+      <span id="status" class="text-xs text-gray-500 ml-auto truncate max-w-[40%]">no file loaded</span>
+    </header>
+    <main class="flex flex-1 min-h-0 relative">
+      <aside id="sidebar" data-collapsed="false"
+        class="absolute md:relative inset-y-0 left-0 z-20 w-56 bg-white border-r border-gray-200 overflow-y-auto flex flex-col transition-all duration-200 ease-in-out
+               data-[collapsed=true]:-translate-x-full
+               md:data-[collapsed=true]:translate-x-0
+               md:data-[collapsed=true]:w-0
+               md:data-[collapsed=true]:border-r-0
+               md:data-[collapsed=true]:overflow-hidden">
+        <div class="p-2 border-b border-gray-200">
+          <div class="text-[10px] tracking-widest text-gray-400 uppercase mb-1.5 px-0.5">Library</div>
+          <div id="library">
+            <div class="text-[11px] text-gray-300 italic px-0.5 py-1">no saved decks</div>
+          </div>
+        </div>
+        <div class="p-2 flex-1">
+          <div class="text-[10px] tracking-widest text-gray-400 uppercase mb-1.5 px-0.5">Slides</div>
+          <div id="thumbs"></div>
+        </div>
+      </aside>
+      <section id="stage" data-presenting="false"
+        class="flex-1 overflow-auto p-4 sm:p-6 flex items-start justify-center bg-gray-100
+               data-[presenting=true]:p-0
+               data-[presenting=true]:bg-black
+               data-[presenting=true]:items-center
+               data-[presenting=true]:cursor-none">
+        <div class="text-gray-400 p-10 text-center">pick a .pptx file to render</div>
+      </section>
+    </main>
+  </div>
+
+  <script src="../js/lib/jszip.min.js"></script>
+  <script src="../js/shared/FileDatabase.js"></script>
+  <script src="../js/shared/SidebarNav.js"></script>
+  <script src="../js/pptx/ColorUtils.js"></script>
+  <script src="../js/pptx/XmlUtils.js"></script>
+  <script src="../js/pptx/ShapeParser.js"></script>
+  <script src="../js/pptx/SlideRenderer.js"></script>
+  <script src="../js/pptx/PptxLoader.js"></script>
+  <script src="../js/pptx/PptxApp.js"></script>
+</body>
+
+</html>
